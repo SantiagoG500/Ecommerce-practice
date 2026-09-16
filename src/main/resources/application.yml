@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: auth
+
+  datasource:
+    url: jdbc:postgresql://aws-0-us-east-1.pooler.supabase.com:5432/postgres?sslmode=require
+    username: postgres.htzqswzvtlplrlnhevcf
+    password: "bTclnlzgIzWIMnyL"
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080
+
+
+#spring:
+#  application:
+#    name: auth
+#
+#  datasource:
+#    url: jdbc:postgresql://db.htzqswzvtlplrlnhevcf.supabase.co:5432/postgres?sslmode=require
+#    username: postgres
+#    password: "bTclnlzgIzWIMnyL"
+#    driver-class-name: org.postgresql.Driver
+#
+#  jpa:
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#    hibernate:
+#      # Use 'update' to automatically create/update database tables from @Entity classes
+#      ddl-auto: update
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+#
+#server:
+#  port: 8080
