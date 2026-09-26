@@ -6,8 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+// Ask why this didn't work  @GeneratedValue(strategy=GenerationType.UUID)
 @Entity
-@Table(name=" users")
+@Table(name = "users")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,7 +16,6 @@ import lombok.Setter;
 public class UserData {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.UUID)
     private String id;
 
     @Column(nullable = false, unique = true)
@@ -28,5 +28,4 @@ public class UserData {
     private String password;
     private Integer age;
     private String phoneNumber;
-
 }

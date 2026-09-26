@@ -11,6 +11,8 @@ public interface UserGateway {
 
     User updateUser(User user);
 
+    User getByEmail(String email);
+
     void deleteUserById(String id);
 
 }

@@ -2,13 +2,12 @@ package com.ecommerce.auth.infraestructure.entry_points;
 import com.ecommerce.auth.domain.model.User;
 
 import com.ecommerce.auth.domain.usecase.UserUseCase;
-import com.ecommerce.auth.infraestructure.mapper.MapperUser;
-import lombok.RequiredArgsConstructor;
+//import com.ecommerce.auth.infraestructure.mapper.MapperUser;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.parser.Entity;
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("api/ecommerce/user")
@@ -18,7 +17,7 @@ import javax.swing.text.html.parser.Entity;
 public class UserController {
 
     private final UserUseCase userUseCase;
-    private final MapperUser mapperUser;
+//    private final MapperUser mapperUser;
 
     @PostMapping("/save")
     public ResponseEntity<User> saveUser(@RequestBody User user) {
@@ -45,5 +44,19 @@ public class UserController {
        userUseCase.deleteUserById(id);
 
        return new ResponseEntity<>("User successfully deleted", HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody User user) {
+        try {
+            String authMessaje = userUseCase.login(
+                    user.getEmail(),
+                    user.getPassword()
+            );
+
+            return new ResponseEntity<>(authMessaje, HttpStatus.OK);
+        } catch (IllegalArgumentException err) {
+            return new ResponseEntity<>(err.getMessage(), HttpStatus.UNAUTHORIZED);
+        }
     }
 }
